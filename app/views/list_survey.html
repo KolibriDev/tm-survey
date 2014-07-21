@@ -1,0 +1,10 @@
+<table class="table">
+	<thead>
+		<th>Nafn</th>
+		<th>Fjöldi spurninga</th>
+	</thead>
+	<tr ng-repeat="l in list">
+		<td><a ng-href="#/take/{{l._id}}">{{l.name}}</a></td>
+		<td>{{l.questions.length}}</td>		
+	</tr>
+</table>

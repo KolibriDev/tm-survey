@@ -1,0 +1,11 @@
+Survey name: {{list.name}}
+<div ng-repeat="question in list.questions">
+    {{question.text}}
+    <ul>
+        <li ng-repeat="answer in question.answers">
+
+            <input type="radio" ng-model="color" value="red">{{answer.val}}
+            <br/>
+        </li>
+    </ul>
+</div>

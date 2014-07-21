@@ -31,8 +31,12 @@ angular
         templateUrl: 'views/create.html',
         controller: 'CreateCtrl'
       })
-      .when('/take', {
-        templateUrl: 'views/take.html',
+      .when('/list', {
+        templateUrl: 'views/list_survey.html',
+        controller: 'ListCtrl'
+      })
+      .when('/take/:id', {
+        templateUrl: 'views/take_survey.html',
         controller: 'TakeCtrl'
       })
       .otherwise({

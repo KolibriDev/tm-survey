@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tmSurveyApp').controller('CreateCtrl', function($scope) {
+angular.module('tmSurveyApp').controller('CreateCtrl', function($scope, $resource) {
     $scope.surveyName = '';
     $scope.questions = [];
     $scope.question = {};
@@ -19,6 +19,13 @@ angular.module('tmSurveyApp').controller('CreateCtrl', function($scope) {
     $scope.addAnswer = function() {
         $scope.question.answers.push({
             val: ''
+        });
+    };
+
+    $scope.insertSurvey = function() {
+        $resource('/addsurvey').save({
+            name: $scope.surveyName,
+            questions: $scope.questions
         });
     };
 });
