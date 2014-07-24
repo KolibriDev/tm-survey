@@ -1,10 +1,16 @@
 <table class="table">
-	<thead>
-		<th>Nafn</th>
-		<th>Fjöldi spurninga</th>
-	</thead>
-	<tr ng-repeat="l in list">
-		<td><a ng-href="#/take/{{l._id}}">{{l.name}}</a></td>
-		<td>{{l.questions.length}}</td>		
-	</tr>
+    <thead>
+        <th>Nafn</th>
+        <th>Fjöldi spurninga</th>
+        <th>Aðgerð</th>
+    </thead>
+    <tr ng-repeat="l in list">
+        <td>{{l.name}}
+        </td>
+        <td>{{l.questions.length}}</td>
+
+        <td><a ng-href="#/take/{{l._id}}">Svara könnun</a> /
+        <a ng-href="#/result/{{l._id}}">Niðurstöður</a> 
+        </td>
+    </tr>
 </table>

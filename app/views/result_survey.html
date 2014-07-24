@@ -1,0 +1,9 @@
+<span>{{survey.surveyName}}</span> <br/>
+<div ng-repeat="q in survey.filteredResult">
+	<span>{{q.question}}</span>
+	<ul>
+		<li ng-repeat="(svar,counter) in q.countBy">
+			{{svar}}: {{counter}}
+		</li>
+	</ul>
+</div>

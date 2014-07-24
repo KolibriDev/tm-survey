@@ -2,14 +2,14 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var app = express();
-
-var dbHandler = require('./db_handler')('surveys.db');
+var dbs = {}
+dbs.surveys = require('./db_handler')('surveys.db');
+dbs.answers = require('./db_handler')('answers.db');
 
 function serveAngularAppFolder(app) {
     //app.use(express.compress());
     app.use(express.static(__dirname + '/../.tmp'));
     app.use(express.static(__dirname + '/../app'));
-    app.use(express.static(__dirname + '/../bower_components'));
 };
 app.use(bodyParser.urlencoded({
     extended: false
@@ -21,8 +21,7 @@ app.use(bodyParser.json())
 //app.use(express.cookieParser());
 
 app.get('/getall', function(req, res) {
-    dbHandler.find({}).then(function(doc) {
-        console.log(doc[0]);
+    dbs.surveys.find({}).then(function(doc) {
         res.json(200, doc);
     }).fail(function(err) {
         res.send(500, err);
@@ -31,8 +30,28 @@ app.get('/getall', function(req, res) {
 });
 
 app.get('/getsurvey/:id', function(req, res) {
-    dbHandler.find({_id:req.params.id}).then(function(doc) {
+    dbs.surveys.find({
+        _id: req.params.id
+    }).then(function(doc) {
+        console.log(doc);
         res.json(200, doc[0]);
+    }).fail(function(err) {
+        res.send(500, err);
+    });
+
+});
+
+app.get('/resultsurvey/:id', function(req, res) {
+    dbs.answers.find({
+        surveyId: req.params.id
+    }).then(function(doc) {
+        console.log(doc);
+        if (doc.length) {
+            res.json(200, doc);
+        }
+        else{
+            res.send(404);
+        }
     }).fail(function(err) {
         res.send(500, err);
     });
@@ -41,7 +60,18 @@ app.get('/getsurvey/:id', function(req, res) {
 
 app.post('/addsurvey', function(req, res) {
     console.log(req.body);
-    var doc = dbHandler.insert(req.body);
+    var doc = dbs.surveys.insert(req.body);
+    res.send(200, doc);
+});
+
+app.post('/savesurvey', function(req, res) {
+    var survey = {};
+    survey.surveyId = req.body._id;
+    delete req.body._id;
+    survey.answer = req.body;
+    console.log(survey);
+    var doc = dbs.answers.insert(survey);
+    console.log(doc);
     res.send(200, doc);
 });
 

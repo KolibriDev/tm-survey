@@ -39,6 +39,10 @@ angular
         templateUrl: 'views/take_survey.html',
         controller: 'TakeCtrl'
       })
+      .when('/result/:id', {
+        templateUrl: 'views/result_survey.html',
+        controller: 'ResultCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

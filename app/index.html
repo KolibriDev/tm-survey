@@ -61,6 +61,7 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -79,6 +80,12 @@
         <script src="scripts/controllers/create.js"></script>
         <script src="scripts/controllers/list_survey.js"></script>
         <script src="scripts/controllers/take_survey.js"></script>
+        <script src="scripts/controllers/result_survey.js"></script>
         <!-- endbuild -->
+    <script language="javascript">
+    if (window.location.hostname === 'localhost') {
+        document.write('<script src="http://localhost:35729/livereload.js"></' + 'script>');
+    }
+</script>
 </body>
 </html>
