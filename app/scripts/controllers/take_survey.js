@@ -7,5 +7,5 @@ angular.module('tmSurveyApp')
 	$scope.sendSurvey = function () {
 		console.log($scope.survey);
 		$resource('/savesurvey/').save($scope.survey);
-	}
+	};
 });

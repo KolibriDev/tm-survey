@@ -1,32 +1,32 @@
-<div class="clearfix">
-<div class="create-survey col-xs-6">
+<div>
+<div>
 <form role="form">
-    <div class="form-group">
+    <div>
         <label for="surveyName">Survey name</label>
-        <input ng-model="surveyName" type="text" class="form-control" id="surveyName" placeholder="Enter survey name">
+        <input ng-model="surveyName" type="text" id="surveyName" placeholder="Enter survey name">
     </div>
-    <div class="well">
-        <div class="form-group">
+    <div>
+        <div>
             <label for="surveyText">Question</label>
-            <input ng-model="question.text" type="text" class="form-control" id="surveyText" placeholder="Enter question text">
+            <input ng-model="question.text" type="text" id="surveyText" placeholder="Enter question text">
         </div>
 
         <div>
             <label>Answers:</label>
 
-            <div class="form-group" ng-repeat="answer in question.answers">
-                #{{$index+1}}: <input ng-model="answer.val" type="text" class="form-control" name="surveyAnswer" placeholder="Enter answer text">
+            <div ng-repeat="answer in question.answers">
+                #{{$index+1}}: <input ng-model="answer.val" type="text" name="surveyAnswer" placeholder="Enter answer text">
             </div>
             <button ng-click="addAnswer()">Add answer</button>
 
 
         </div>
-        <button class="btn btn-default" ng-click="addQuestion()">Submit</button>
+        <button ng-click="addQuestion()">Submit</button>
     </div>
 
 </form>
 </div>
-<div class="display-survey col-xs-6">
+<div>
 	Survey name: {{surveyName}}
 
 	<div ng-repeat="question in questions">
