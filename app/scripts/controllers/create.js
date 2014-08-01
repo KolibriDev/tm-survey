@@ -7,7 +7,7 @@ angular.module('tmSurveyApp').controller('CreateCtrl', function($scope, $resourc
     $scope.question.answers = [{
         val: ''
     }];
-
+    $scope.step = "1";
     $scope.addQuestion = function() {
         $scope.questions.push($scope.question);
         $scope.question = {};
@@ -27,5 +27,9 @@ angular.module('tmSurveyApp').controller('CreateCtrl', function($scope, $resourc
             name: $scope.surveyName,
             questions: $scope.questions
         });
+    };
+
+    $scope.setStep = function (step) {
+        $scope.step = step;
     };
 });

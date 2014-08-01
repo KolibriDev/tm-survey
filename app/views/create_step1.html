@@ -1,0 +1,23 @@
+<div ng-hide="step!='1'">
+    <div>
+        <h4>Start creating your survey</h4>
+    </div>
+
+    <label class="survey-title">
+        <span>Title:</span>
+        <input class="fancy-input" ng-model="surveyName" type="text" id="surveyName" placeholder="Enter survey name">
+    </label>
+    <br>
+    <br>
+    <label class="survey-description">
+        <span>Description:</span>
+        <textarea ng-model="surveyDescription" class="fancy-input" placeholder="Enter survey description"></textarea>
+    </label>
+    <br>
+    <br>
+    <a class="tm-button button" ng-click="setStep('2')">Let's Go!</a>
+</div>
+
+<div ng-hide="step=='1'">
+        <h5>{{surveyName}}</h5>
+</div>

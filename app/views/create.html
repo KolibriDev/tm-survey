@@ -1,43 +1,59 @@
-<div>
-<div>
-<form role="form">
-    <div>
-        <label for="surveyName">Survey name</label>
-        <input ng-model="surveyName" type="text" id="surveyName" placeholder="Enter survey name">
+<div class="create-container">
+    <div class="left-box">
+        <div class="arrow_box" ng-class="{'active':step=='1'}">
+            <h2>Enter survey name</h2>
+        </div>
+        <div class="arrow_box" ng-class="{'active':step=='2'}">
+            <h2>Enter questions</h2>
+        </div>
     </div>
-    <div>
-        <div>
-            <label for="surveyText">Question</label>
-            <input ng-model="question.text" type="text" id="surveyText" placeholder="Enter question text">
+    <div class="right-box">
+        <div class="enter-box" ng-class="{'active':step=='1'}">
+            <ng-include src="'views/create_step1.html'"></ng-include>
+        </div>
+        <div class="enter-box" ng-class="{'active':step=='2'}">
+            <ng-include src="'views/create_step2.html'"></ng-include>
         </div>
 
-        <div>
-            <label>Answers:</label>
-
-            <div ng-repeat="answer in question.answers">
-                #{{$index+1}}: <input ng-model="answer.val" type="text" name="surveyAnswer" placeholder="Enter answer text">
+        <form role="form">
+            <div>
+                <label for="surveyName">Survey name</label>
+                <input ng-model="surveyName" type="text" id="surveyName" placeholder="Enter survey name">
             </div>
-            <button ng-click="addAnswer()">Add answer</button>
+            <div>
+                <div>
+                    <label for="surveyText">Question</label>
+                    <input ng-model="question.text" type="text" id="surveyText" placeholder="Enter question text">
+                </div>
 
+                <div>
+                    <label>Answers:</label>
+
+                    <div ng-repeat="answer in question.answers">
+                        #{{$index+1}}:
+                        <input ng-model="answer.val" type="text" name="surveyAnswer" placeholder="Enter answer text">
+                    </div>
+                    <button ng-click="addAnswer()">Add answer</button>
+
+
+                </div>
+                <button ng-click="addQuestion()">Submit</button>
+            </div>
+
+        </form>
+        <div>
+            Survey name: {{surveyName}}
+
+            <div ng-repeat="question in questions">
+                {{question.text}}
+                <ul>
+                    <li ng-repeat="answer in question.answers">
+                        {{answer.val}}
+                    </li>
+                </ul>
+            </div>
 
         </div>
-        <button ng-click="addQuestion()">Submit</button>
+        <button ng-click="insertSurvey()">Save</button>
     </div>
-
-</form>
-</div>
-<div>
-	Survey name: {{surveyName}}
-
-	<div ng-repeat="question in questions">
-		{{question.text}}
-		<ul>
-			<li ng-repeat="answer in question.answers">
-				{{answer.val}}
-			</li>
-		</ul>
-	</div>
-
-</div>
-<button ng-click="insertSurvey()">Save</button>
 </div>

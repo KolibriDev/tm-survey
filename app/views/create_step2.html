@@ -1,0 +1,19 @@
+<div>
+    <div>
+        <label for="surveyText">Question</label>
+        <input ng-model="question.text" type="text" id="surveyText" placeholder="Enter question text">
+    </div>
+
+    <div>
+        <label>Answers:</label>
+
+        <div ng-repeat="answer in question.answers">
+            #{{$index+1}}:
+            <input ng-model="answer.val" type="text" name="surveyAnswer" placeholder="Enter answer text">
+        </div>
+        <button ng-click="addAnswer()">Add answer</button>
+
+
+    </div>
+    <button ng-click="addQuestion()">Submit</button>
+</div>

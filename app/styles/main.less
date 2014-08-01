@@ -1,5 +1,28 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 @import url(head.less);
- body{
-  margin: 0;
-  font-family: Arial,Helvetica,sans-serif;
- }
+@import url(arrow.less);
+@import url(create.less);
+ body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    width: auto;
+    min-width: 768px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tm-button {
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
